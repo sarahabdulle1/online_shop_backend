@@ -22,7 +22,7 @@ public class Order {
     )
     private List<Item> items;
     @Column
-    private Double totalPrice;
+    private BigDecimal totalPrice;
 
     @Column
     private Boolean orderPlaced;
@@ -30,7 +30,7 @@ public class Order {
 //    constructor
     public Order (){
         this.items = new ArrayList<>();
-        this.totalPrice = 0.00;
+        this.totalPrice = BigDecimal.valueOf(0.00);
         this.orderPlaced = false;
     }
 
@@ -44,11 +44,11 @@ public class Order {
         this.items = items;
     }
 
-    public Double getTotalPrice() {
+    public BigDecimal getTotalPrice() {
         return totalPrice;
     }
 
-    public void setTotalPrice(Double totalPrice) {
+    public void setTotalPrice(BigDecimal totalPrice) {
         this.totalPrice = totalPrice;
     }
 
@@ -74,30 +74,4 @@ public class Order {
 
     }
 
-
-//   1. update total price
-
-//    public Double updateTotalPrice(Order order) {
-//        for (Item item : Order order){
-//            Item price = item.getPrice();
-//            totalPrice += price;
-//        }
-//
-//        newPrice =
-//        setTotalPrice(newPrice);
-//
-//    }
-
-
-
-//    2. add item to list
-
-
-//    method to calculate price
-    //    initialise newTotalPrice = 0
-    //    iterate through each item in the item list
-    //    extrapolate the price
-    //    add the price to the total price
-    //    continue until all the items in the list have been iterated through
-    //    set totalPrice to newTotalPrice
 }

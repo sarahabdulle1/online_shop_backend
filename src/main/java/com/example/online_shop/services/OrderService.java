@@ -23,17 +23,18 @@ public class OrderService {
 
     //   1. update total price
 
-    public Double updateTotalPriceByItemId(Long itemId, Long orderId) {
+    public BigDecimal updateTotalPriceByItemId(Long itemId, Long orderId) {
             // get current total price of order
             Order order = orderRepository.findById(orderId).get();
-            Double orderTotalPrice = order.getTotalPrice();
+            BigDecimal orderTotalPrice = order.getTotalPrice();
 
             // get price of item
             Item item = itemRepository.findById(itemId).get();
-            Double itemPrice = item.getPrice();
+            BigDecimal itemPrice = item.getPrice();
 
             //add item price to total price for a new total price and save to repository
-            Double updatedTotalPrice = orderTotalPrice + itemPrice;
+            BigDecimal updatedTotalPrice = orderTotalPrice.add(itemPrice);
+
             order.setTotalPrice(updatedTotalPrice);
             orderRepository.save(order);
 
@@ -62,7 +63,7 @@ public class OrderService {
     public Order addItemToCart(Long itemId, Long orderId){
         Order order = orderRepository.findById(orderId).get();
 
-        Double newPrice = updateTotalPriceByItemId(itemId, orderId);
+        BigDecimal newPrice = updateTotalPriceByItemId(itemId, orderId);
         List newList = addItemToList(itemId, orderId);
 
         orderRepository.save(order);

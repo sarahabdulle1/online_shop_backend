@@ -9,6 +9,8 @@ import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
 import org.springframework.stereotype.Component;
 
+import java.math.BigDecimal;
+
 @Component
 public class DataLoader implements ApplicationRunner {
 
@@ -27,10 +29,10 @@ public class DataLoader implements ApplicationRunner {
     public void run(ApplicationArguments args) throws Exception {
 
         //create new Items
-        Item item1 = new Item("Pandora Ring", 74.59);
-        Item item2 = new Item("Nike Air Max 95", 119.99);
-        Item item3 = new Item("Prada Bag", 1400.00);
-        Item item4 = new Item("Telfar Bag", 500.00);
+        Item item1 = new Item("Pandora Ring", BigDecimal.valueOf(74.59));
+        Item item2 = new Item("Nike Air Max 95", BigDecimal.valueOf(119.99));
+        Item item3 = new Item("Prada Bag", BigDecimal.valueOf(1400.00));
+        Item item4 = new Item("Telfar Bag", BigDecimal.valueOf(500.00));
 
         itemRepository.save(item1);
         itemRepository.save(item2);

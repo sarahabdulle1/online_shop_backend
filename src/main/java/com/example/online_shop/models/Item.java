@@ -17,7 +17,7 @@ public class Item {
     @Column
     private String name;
     @Column
-    private Double price; // test the precision of price calculation (TDD)
+    private BigDecimal price; // test the precision of price calculation (TDD)
 
     @ManyToMany(mappedBy ="items")
     @JsonIgnoreProperties({"items"})
@@ -27,7 +27,7 @@ public class Item {
 //    private int inventory;   //extension
     
 //    constructor
-    public Item(String name, Double price) {
+    public Item(String name, BigDecimal price) {
         this.name = name;
         this.price = price;
 //        this.orders = new ArrayList<>();
@@ -45,11 +45,11 @@ public class Item {
         this.name = name;
     }
 
-    public Double getPrice() {
+    public BigDecimal getPrice() {
         return price;
     }
 
-    public void setPrice(Double price) {
+    public void setPrice(BigDecimal price) {
         this.price = price;
     }
 
