@@ -1,4 +1,4 @@
-# `Online Shop (backend, web app)`
+# `Online Shop (backend)`
 
 ### Technical Information:
 ``` 
